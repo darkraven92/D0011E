@@ -1,0 +1,55 @@
+                  _______
+    A3 ---------|       |
+    A2 ---------|       |
+    A1 ---------|       |
+    A0 ---------| Adder |------ S0
+    B3 ---------|       |
+    B2 ---------|       |
+    B1 ---------|       |
+    B0 ---------|_______|------ C
+
+                      Sub
+                       |
+                       V
+
+                   _______
+                  |       |
+    B3 ----------|       |
+    B2 ----------|       |
+    B1 ----------|       |
+    B0 ----------|  NOT  |
+                  |_______|------- B'
+
+                                  _______
+                                 |       |
+    A3 ------------------------|  XOR  |------- S3
+    B'3 -----------------------|       |
+    Sub -----------------------|       |
+                                 |       |
+    A2 ------------------------|  XOR  |------- S2
+    B'2 -----------------------|       |
+    Sub -----------------------|       |
+                                 |       |
+    A1 ------------------------|  XOR  |------- S1
+    B'1 -----------------------|       |
+    Sub -----------------------|       |
+                                 |       |
+    A0 ------------------------|  XOR  |------- S0
+    B'0 -----------------------|       |
+    Sub -----------------------|_______|
+
+
+                                             _______
+                                            |       |
+                        Cin ----------------|  ADD  |------- C
+                                           |_______|
+
+                                               V
+                                             Overflow
+
+In this schematic, the inputs are A0-A3, B0-B3, and the control signal Sub. The output is S0-S3, and the carry-out is C. 
+The overflow bit is determined by the adder and is denoted by Overflow.
+
+If Sub is low (0), the adder performs an addition of A and B, and the output is S=A+B. If Sub is high (1), 
+the adder performs a subtraction of B from A, and the output is S=A-B. The input B is inverted using NOT gates and 
+XOR gates are used to subtract B' from A when Sub is high. Finally, the carry-out from the adder is the carry-out for both addition and subtraction.
